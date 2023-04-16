@@ -8,6 +8,17 @@
         <a href="{% url 'moodboard:detail' moodboard.id %}">
           {{ moodboard.title }}
         </a>
+        {% if moodboard.tags %}
+          <div class="projcard-tagbox">
+              {% for tag in moodboard.tags_as_list %}
+                  <span class="projcard-tag mt-1">{{tag}}</span>
+              {% endfor %}
+          </div>
+        {% else %}
+          <div class="projcard-tagbox">
+            No tags for this moodboard
+          </div>
+    {% endif %}
       </li>
     {% endfor %}
   </ul>
