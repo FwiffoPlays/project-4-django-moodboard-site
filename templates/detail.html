@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{{ moodboard.title }}</h2>
+  <p>{{ moodboard.description }}</p>
+  <p>Tags: {{ moodboard.tags }}</p>
+  <h3>Images:</h3>
+  <div class="row">
+    {% for image in moodboard.images.all %}
+      <div class="col-md-4 mb-3">
+        <img src="{{ image
