@@ -6,5 +6,4 @@ app_name = 'moodboard'
 urlpatterns = [
     path('', views.index, name='index'),
     path('create/', views.create_moodboard, name='create_moodboard'),
-    path('', views.moodboard_list, name='moodboard_list'),
 ]
