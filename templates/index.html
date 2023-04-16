@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>All Moodboards</h2>
+  <ul class="list-group mb-3">
+    {% for moodboard in moodboards %}
+      <li class="list-group-item">
+        <a href="{% url 'moodboard:detail' moodboard.id %}">
+          {{ moodboard.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'moodboard:create_moodboard' %}" class="btn btn-primary">Create new moodboard</a>
+{% endblock %}
