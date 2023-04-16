@@ -1,5 +1,5 @@
 from django import forms
-from .models import Moodboard, Image, Tag
+from .models import Moodboard, Image
 
 class MoodboardForm(forms.ModelForm):
     class Meta:
@@ -14,8 +14,3 @@ class ImageForm(forms.ModelForm):
 ImageFormSet = forms.inlineformset_factory(
     Moodboard, Image, form=ImageForm, extra=1, can_delete=True, max_num=10
 )
-
-class TagForm(forms.ModelForm):
-    class Meta:
-        model = Tag
-        fields = ['name']

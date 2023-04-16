@@ -1,11 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>{{ moodboard.title }}</h2>
-  <p>{{ moodboard.description }}</p>
-  <p>Tags: {{ moodboard.tags }}</p>
-  <h3>Images:</h3>
-  <div class="row">
-    {% for image in moodboard.images.all %}
-      <div class="col-md-4 mb-3">
-        <img src="{{ image
+    <h2>{{ moodboard.title }}</h2>
+    <h3>DEBUG: Current moodboard id: {{moodboard.id}}</h3>
+    <p>{{ moodboard.description }}</p>
+    {% if moodboard.tags %}
+        <div class="projcard-tagbox">
+            {% for tag in moodboard.tags_as_list %}
+                <span class="projcard-tag mt-1">{{tag}}</span>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="projcard-tagbox">
+            No tags for this moodboard
+        </div>
+    {% endif %}
+    <h3>Images:</h3>
+    <div class="row">
+        {% for image in images %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ image.image.url }}" class="card-img-top" alt="Moodboard image">
+                </div>
+            </div>
+        {% empty %}
+            <p>No images in this moodboard.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
