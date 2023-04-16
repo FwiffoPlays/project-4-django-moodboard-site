@@ -18,7 +18,7 @@ class Moodboard(models.Model):
         return self.title
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='moodboard_images/', storage=CloudinaryStorage())
+    image = CloudinaryField('moodboard_images')
     moodboard = models.ForeignKey(Moodboard, related_name='images', on_delete=models.CASCADE)
 
     def __str__(self):
