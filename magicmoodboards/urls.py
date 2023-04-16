@@ -19,7 +19,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('moodboard/', include('moodboard.urls', namespace='moodboard')),
+    path('', include('moodboard.urls', namespace='moodboard')),
 ]
 
 if settings.DEBUG:
