@@ -2,22 +2,21 @@
 
 {% block content %}
     {% if user.is_authenticated %}
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+    {% endif %}
         <h2>Create a Moodboard</h2>
         <form method="post" enctype="multipart/form-data" class="mb-3">
             {% csrf_token %}
             {{ form.as_p }}
-            {{ formset.management_form }}
-            {% for image_form in formset %}
-                <div class="form-group">
-                    {{ image_form.as_table }}
-                </div>
-            {% endfor %}
-            <select name="tags" multiple>
-                {% for tag in tags %}
-                    <option value="{{ tag.id }}">{{ tag.name }}</option>
-                {% endfor %}
-            </select>
-            
+            <!-- {{ image_form.as_p }}     -->     
+            <!-- Add the input field for multiple images directly in the template -->
+            <label for="image">Images:</label>
+            <input type="file" name="image" id="image" multiple>  
             <button type="submit" class="btn btn-primary">Create Moodboard</button>
         </form>
     {% else %}

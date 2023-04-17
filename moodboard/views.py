@@ -1,32 +1,36 @@
 from django.shortcuts import render, redirect
+import cloudinary.uploader
 from django.contrib.auth.models import User
-from .forms import MoodboardForm, ImageFormSet
+from django.contrib import messages
+from .forms import MoodboardForm, ImageForm
 from .models import Moodboard, Image
 
 def create_moodboard(request):
     if request.method == 'POST':
         form = MoodboardForm(request.POST)
-        formset = ImageFormSet(request.POST, request.FILES, prefix='image_form')
+        #image_form = ImageForm(request.POST, request.FILES)
 
-        if form.is_valid() and formset.is_valid():
-            moodboard = form.save(commit=False)  # Don't save the instance yet
-            moodboard.user = request.user  # Associate the logged-in user with the moodboard
-            moodboard = form.save() # Save the moodboard instance
-            for inline_form in formset:
-                if inline_form.cleaned_data:
-                    image = inline_form.save(commit=False)
-                    image.moodboard = moodboard
-                    image.save()
-
-            return redirect('moodboard:index') 
-
+        if form.is_valid():
+            if request.FILES.getlist('image'):
+                moodboard = form.save(commit=False)  # Don't save the instance yet
+                moodboard.user = request.user  # Associate the logged-in user with the moodboard
+                moodboard = form.save() # Save the moodboard instance
+                
+                for img in request.FILES.getlist('image'):
+                    uploaded_image = cloudinary.uploader.upload(img)
+                    image_url = uploaded_image['secure_url']
+                    Image.objects.create(moodboard=moodboard, image=image_url)
+                return redirect('moodboard:index') 
+            else:
+                #Display an error to the user if no images are uploaded
+                messages.error(request, 'Please upload at least one image')
     else:
         form = MoodboardForm()
-        formset = ImageFormSet(prefix='image_form')
+        #image_form = ImageForm(prefix='image_form')
 
     context = {
         'form': form,
-        'formset': formset,
+        #'image_form': image_form,
     }
 
     return render(request, 'create_moodboard.html', context)

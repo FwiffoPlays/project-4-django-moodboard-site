@@ -10,7 +10,6 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
         fields = ['image']
-
-ImageFormSet = forms.inlineformset_factory(
-    Moodboard, Image, form=ImageForm, extra=1, can_delete=True, max_num=10
-)
+        widgets = {
+            'image': forms.ClearableFileInput(attrs={'multiple': True}),
+        }
