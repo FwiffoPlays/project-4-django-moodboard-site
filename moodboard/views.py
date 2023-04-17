@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import cloudinary.uploader
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .forms import MoodboardForm, ImageForm
 from .models import Moodboard, Image
 
@@ -34,6 +35,18 @@ def create_moodboard(request):
     }
 
     return render(request, 'create_moodboard.html', context)
+
+@login_required
+def delete_moodboard(request, pk):
+    moodboard = get_object_or_404(Moodboard, pk=pk)
+    
+    if request.user == moodboard.user or request.user.is_staff:
+        moodboard.delete()
+        messages.success(request, 'Moodboard has been deleted.')
+        return redirect('moodboard:index')
+    else:
+        messages.error(request, 'You do not have permission to delete this moodboard.')
+        return redirect('moodboard:detail', pk=pk)
 
 def index(request):
     moodboards = Moodboard.objects.all()
