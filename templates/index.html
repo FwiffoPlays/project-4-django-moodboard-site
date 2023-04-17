@@ -1,25 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>All Moodboards</h2>
-  <ul class="list-group mb-3">
+<div class="container">
+  <h2 class="my-4">All Moodboards</h2>
+  <div class="row">
     {% for moodboard in moodboards %}
-      <li class="list-group-item">
-        <a href="{% url 'moodboard:detail' moodboard.id %}">
-          {{ moodboard.title }}
-        </a>
-        {% if moodboard.tags %}
-          <div class="projcard-tagbox">
-              {% for tag in moodboard.tags_as_list %}
-                  <span class="projcard-tag mt-1">{{tag}}</span>
-              {% endfor %}
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{% url 'moodboard:detail' moodboard.id %}">
+                {{ moodboard.title }}
+              </a>
+            </h5>
+            {% if moodboard.tags %}
+              <div class="projcard-tagbox">
+                {% for tag in moodboard.tags_as_list %}
+                  <span class="badge bg-primary">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="projcard-tagbox">
+                <span class="badge bg-secondary">No tags</span>
+              </div>
+            {% endif %}
+            <p class="card-text">
+              Submitted by: {{ moodboard.user.username }}
+            </p>
           </div>
-        {% else %}
-          <div class="projcard-tagbox">
-            No tags for this moodboard
-          </div>
-    {% endif %}
-      </li>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
+</div>
 {% endblock %}
