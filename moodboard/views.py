@@ -34,7 +34,7 @@ def create_moodboard(request):
         #'image_form': image_form,
     }
 
-    return render(request, 'create_moodboard.html', context)
+    return render(request, 'moodboard/create_moodboard.html', context)
 
 @login_required
 def delete_moodboard(request, pk):
@@ -50,7 +50,7 @@ def delete_moodboard(request, pk):
 
 def index(request):
     moodboards = Moodboard.objects.all()
-    return render(request, 'index.html', {'moodboards': moodboards})
+    return render(request, 'moodboard/index.html', {'moodboards': moodboards})
 
 def detail(request, pk):
     moodboard = Moodboard.objects.get(pk=pk)
@@ -59,4 +59,4 @@ def detail(request, pk):
         'moodboard': moodboard,
         'images': images
     }
-    return render(request, 'detail.html', context)
+    return render(request, 'moodboard/detail.html', context)
