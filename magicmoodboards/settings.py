@@ -30,10 +30,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 if 'DEVELOPMENT' in os.environ:
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+    DEBUG = True
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    DEBUG = False
 
 ALLOWED_HOSTS = ['ci-project-4-django-moodboards.herokuapp.com', 'localhost']
 

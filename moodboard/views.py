@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import cloudinary.uploader
+from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -48,8 +49,20 @@ def delete_moodboard(request, pk):
         messages.error(request, 'You do not have permission to delete this moodboard.')
         return redirect('moodboard:detail', pk=pk)
 
+def get_queryset(request):
+    query = request.GET.get('q')
+    if query:
+        moodboards = Moodboard.objects.filter(
+            Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(tags__icontains=query)
+        )
+    else:
+        moodboards = Moodboard.objects.all()
+    return moodboards
+
 def index(request):
-    moodboards = Moodboard.objects.all()
+    moodboards = get_queryset(request)
     return render(request, 'moodboard/index.html', {'moodboards': moodboards})
 
 def detail(request, pk):
