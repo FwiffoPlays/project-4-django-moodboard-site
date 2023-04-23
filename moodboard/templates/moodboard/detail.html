@@ -13,6 +13,7 @@
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this moodboard?');">Delete Moodboard</button>
                     </form>
+                    <a href="{% url 'moodboard:edit_moodboard' moodboard_id=moodboard.id %}" class="btn btn-secondary">Edit</a>
                 {% endif %}
             </div>
         </div>
