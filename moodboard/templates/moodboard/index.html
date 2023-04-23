@@ -16,7 +16,9 @@
             {% if moodboard.tags %}
               <div class="projcard-tagbox">
                 {% for tag in moodboard.tags_as_list %}
-                  <span class="badge bg-primary">{{ tag }}</span>
+                  <a href="{% url 'moodboard:index' %}?q={{ tag|urlencode }}" class="text-decoration-none">
+                    <span class="badge bg-primary text-white">{{ tag }}</span>
+                  </a>
                 {% endfor %}
               </div>
             {% else %}
