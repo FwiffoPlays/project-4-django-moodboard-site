@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 if 'DEVELOPMENT' in os.environ:
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-    DEBUG = False
+    DEBUG = True
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     DEBUG = False

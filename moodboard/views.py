@@ -67,7 +67,7 @@ def edit_moodboard(request, moodboard_id):
 
 @login_required
 def delete_moodboard(request, pk):
-    moodboard = get_object_or_404(Moodboard, pk=moodboard_is)
+    moodboard = get_object_or_404(Moodboard, pk=pk)
     
     if request.user == moodboard.user or request.user.is_staff:
         moodboard.delete()
@@ -75,7 +75,7 @@ def delete_moodboard(request, pk):
         return redirect('moodboard:index')
     else:
         messages.error(request, 'You do not have permission to delete this moodboard.')
-        return redirect('moodboard:detail', pk=moodboard_id)
+        return redirect('moodboard:detail', pk=pk)
 
 
 def get_queryset(request):

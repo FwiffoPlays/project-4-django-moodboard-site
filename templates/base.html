@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body>
+<body>    
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{% url 'moodboard:index' %}">Magic Moodboards</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +47,16 @@
     </div>
   </nav>
   <div class="container mt-4">
+    {% if messages %}
+        <div class="my-4">
+          {% for message in messages %}
+            <div class="alert alert-dismissible {% if message.tags %} alert-{{ message.tags }}{% endif %}" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        </div>
+    {% endif %}
     {% block content %}
     {% endblock %}
   </div>
