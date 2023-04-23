@@ -104,3 +104,5 @@ def detail(request, pk):
         'images': images
     }
     return render(request, 'moodboard/detail.html', context)
+
+

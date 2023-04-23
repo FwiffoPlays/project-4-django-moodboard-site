@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.conf.urls import handler404, handler403, handler500
 from . import views
 
 app_name = 'moodboard'
