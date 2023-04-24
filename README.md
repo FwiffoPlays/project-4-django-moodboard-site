@@ -51,6 +51,47 @@
 
 ### Wireframes
 
+**Index**
+
+![Index](docs/readme/wireframes/index.png)
+
+**Create**
+
+![Create](docs/readme/wireframes/create.png)
+
+**Edit**
+
+![Edit](docs/readme/wireframes/edit.png)
+
+**Detail**
+
+![Detail](docs/readme/wireframes/detail.png)
+
+**Login**
+
+![Login](docs/readme/wireframes/login.png)
+
+**Logout**
+
+![Logout](docs/readme/wireframes/logout.png)
+
+**Register**
+
+![Register](docs/readme/wireframes/register.png)
+
+**404**
+
+![404](docs/readme/wireframes/404.png)
+
+**403**
+
+![403](docs/readme/wireframes/403.png)
+
+**500**
+
+![500](docs/readme/wireframes/500.png)
+
+
 ### Database Design
 
 ### Security
