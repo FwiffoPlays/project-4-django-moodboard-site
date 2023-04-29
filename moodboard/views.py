@@ -65,14 +65,16 @@ def edit_moodboard(request, moodboard_id):
             if form.is_valid():
                 form.save()
 
-                # Delete existing images
-                Image.objects.filter(moodboard=moodboard).delete()
+                if request.FILES.getlist("image"):
+                    # Delete existing images
+                    Image.objects.filter(moodboard=moodboard).delete()
 
-                # Upload new images
-                for img in request.FILES.getlist("image"):
-                    uploaded_image = cloudinary.uploader.upload(img)
-                    image_url = uploaded_image["secure_url"]
-                    Image.objects.create(moodboard=moodboard, image=image_url)
+                    # Upload new images
+                    for img in request.FILES.getlist("image"):
+                        uploaded_image = cloudinary.uploader.upload(img)
+                        image_url = uploaded_image["secure_url"]
+                        Image.objects.create(moodboard=moodboard,
+                                             image=image_url)
 
                 messages.success(request, "Moodboard has been updated.")
                 return redirect("moodboard:detail", pk=moodboard_id)
