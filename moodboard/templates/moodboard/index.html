@@ -17,7 +17,7 @@
               <div class="projcard-tagbox">
                 {% for tag in moodboard.tags_as_list %}
                   <a href="{% url 'moodboard:index' %}?q={{ tag|urlencode }}" class="text-decoration-none">
-                    <span class="badge bg-primary text-white">{{ tag }}</span>
+                    <span class="badge bg-secondary text-white">{{ tag }}</span>
                   </a>
                 {% endfor %}
               </div>
