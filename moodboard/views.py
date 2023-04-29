@@ -10,6 +10,14 @@ from .models import Moodboard, Image
 
 
 def create_moodboard(request):
+    """
+    Handles the creation of a new Moodboard.
+
+    If the request method is POST, this function validates the submitted form,
+    uploads images to Cloudinary, and creates a Moodboard object.
+    If the request method is GET, this function renders a form to create a new
+    Moodboard.
+    """
     if request.method == "POST":
         form = MoodboardForm(request.POST)
 
@@ -42,6 +50,13 @@ def create_moodboard(request):
 
 
 def edit_moodboard(request, moodboard_id):
+    """
+    Handles the editing of an existing Moodboard.
+
+    If the user has permission to edit the Moodboard, this function allows
+    them to modify the Moodboard's title, description, tags, and images.
+    If the user does not have permission, a 403 Forbidden response is returned.
+    """
     moodboard = get_object_or_404(Moodboard, pk=moodboard_id)
 
     if request.user == moodboard.user or request.user.is_staff:
@@ -77,6 +92,13 @@ def edit_moodboard(request, moodboard_id):
 
 @login_required
 def delete_moodboard(request, pk):
+    """
+    Handles the deletion of a Moodboard.
+
+    If the user has permission to delete the Moodboard, it is deleted and the
+    user is redirected to the index page. If the user does not have
+    permission, an error message is displayed.
+    """
     moodboard = get_object_or_404(Moodboard, pk=pk)
 
     if request.user == moodboard.user or request.user.is_staff:
@@ -90,6 +112,13 @@ def delete_moodboard(request, pk):
 
 
 def get_queryset(request):
+    """
+    Returns a queryset of Moodboard objects based on the search query.
+
+    If there is a search query, this function filters Moodboard objects by
+    title, description, or tags containing the query. If there is no
+    search query, it returns all Moodboard objects.
+    """
     query = request.GET.get("q")
     if query:
         moodboards = Moodboard.objects.filter(
@@ -103,11 +132,19 @@ def get_queryset(request):
 
 
 def index(request):
+    """
+    Displays a list of all Moodboard objects or a filtered list based on the
+    search query.
+    """
     moodboards = get_queryset(request)
     return render(request, "moodboard/index.html", {"moodboards": moodboards})
 
 
 def detail(request, pk):
+    """
+    Displays the details of a Moodboard, including its title, description,
+    tags, and images.
+    """
     moodboard = Moodboard.objects.get(pk=pk)
     images = Image.objects.filter(moodboard_id=pk)
     context = {"moodboard": moodboard, "images": images}
