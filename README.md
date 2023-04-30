@@ -386,15 +386,38 @@ In this project, various technologies have been utilized to create a functional 
 
 ## Testing
 
+Testing has been completed and documented in a seperate 'TESTING.md' file within this repository to avoid this document from becoming too long.
+
 ## Deployment
 
 ### Version Control
 
+The site was developed using Visual Studio Code  within Gitpod and hosted on GitHub in the '**[project-4-django-moodboard-site](https://github.com/FwiffoPlays/project-4-django-moodboard-site)**' repository. Key git commands included `git add`, `git commit`, and `git push` for staging, committing, and pushing changes.
+
 ### Heroku Deployment
+
+Deploy the site on Heroku by following these steps:
+
+1.  Create a Heroku account and a new app.
+2.  Add Heroku Postgres under the resources tab.
+3.  Reveal and set config vars in the settings tab. (CLOUDINARY_URL, DATABASE_URL, PORT = 8000, SECRET_KEY)
+4.  Connect to GitHub in the deploy tab and authorize access.
+5.  Find the repository, connect, and manually deploy from the main branch.
+
+Note: For this project the Cloudinary and ElephantSQL web services were used for hosting the images and database for the site respectively. You will also need to sign up to these services to get the URLs and secret keys required for the config vars which are used here.
+
+The secret key variable should match the one that you have configured for your django project
+The live site can be found [here](https://ci-project-4-django-moodboards.herokuapp.com/).
 
 ### Run Locally
 
-### Forking the Project
+To run locally, clone the GitHub repository by copying the HTTPS link and running `git clone` in the IDE terminal.
+
+### Fork Project
+
+Forking is used to propose changes or as a starting point for new projects. To fork the repository, click the fork button at the top right corner when viewing the repository on github. This will create a copy of the repository in your github account.
 
 ## Credits/References 
 
+- Credits to my mentor Daisy Mc Girr for her article on creating keywords lists, which was used to help with implementing the tags feature on the site.
+[https://www.codu.co/articles/django-using-model-functions-to-generate-keyword-lists-gpj6731u](https://www.codu.co/articles/django-using-model-functions-to-generate-keyword-lists-gpj6731u)
