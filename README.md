@@ -121,19 +121,125 @@ Tasks:
 - CRUD functionality on moodboards
 - User based restrictions on features such as creating, editing and deleting moodboards
 
-### Site Goals
-
-### Agile Planning
-
-#### Project EPICs
-
-#### User Stories
-
-## The Scope Plane
-
 ## The Structure Plane
 
 ### Features
+
+**Navbar**
+
+User Story: 
+
+As a **developer** I must **create a responsive navbar** so that **it can be included in the base.html file for easy navigation on the site on a range of devices**
+
+![Screenshot of the Navbar](/docs/readme/navbar.png)
+
+The Navbar is a consistent navigation element present on all pages of the website. It allows users to easily navigate between different sections of the site. It contains links to the Home Page, Create Moodboard Page, Register Page, Login Page, and Logout Button. The Navbar is responsive and collapses into a hamburger menu on smaller devices, ensuring an optimal user experience on various screen sizes.
+
+**Home Page**
+
+User Story:
+
+As a **site owner** I would like **a home page which displays user submitted moodboards** so that **users can instantly see examples of other user's submissions when visiting the site**
+
+![Screenshot of the site homepage](/docs/readme/index.png)
+
+The Home Page serves as the main landing page for the website. It displays a collection of moodboards created by users, along with a search functionality to find moodboards based on keywords. The page is accessible to all users, both logged in and logged out.
+
+**Create Moodboard Page**
+
+User Story:
+
+As a **user** I want to be able to **create new mood boards** so that **I can use them for inspiration in projects**
+
+![Screenshot of the create moodboard page](/docs/readme/create.png)
+
+The Create Moodboard Page is accessible to authenticated users, allowing them to create new moodboards. This page contains a form where users can enter the moodboard's title, description, and tags, as well as upload multiple images. Once the form is submitted, the moodboard is saved, and the user is redirected to the Home Page.
+
+**Edit Moodboard Page**
+
+User Story:
+
+As a **user** I would like to **be able to edit moodboard** so that **they can be modified or expanded on after creation, rather than creating a brand new one**
+
+![Screenshot of the edit moodboard page](/docs/readme/edit.png)
+
+The Edit Moodboard Page allows users to modify their existing moodboards. This page is accessible only to the moodboard's creator or staff members. Users can update the moodboard's title, description, tags, and images. After making changes, the user can submit the form, and the moodboard will be updated accordingly.
+
+**Moodboard Detail Page**
+
+User Story:
+
+As a **user** I would like to **view published moodboard** so that **they can be used for inspiration for projects**
+
+![Screenshot of the moodboard detail view page](/docs/readme/detail.png)
+
+The Moodboard Detail Page is accessible to all users and displays the full information of a specific moodboard. It showcases the its title, description, tags, and a collection of images associated with the moodboard. For the moodboard's creator or staff members, additional options such as Edit Moodboard and Delete Moodboard Button are available on this page. This page provides users with an in-depth view of a moodboard, allowing them to explore its content and interact with it accordingly.
+
+![Screenshot of the image modal on the detail page](/docs/readme/modal.png)
+
+An image modal has been implemented on this page so that the user can click to expand each image for a better viewing experience.
+
+**Delete Moodboard Button**
+
+User Story:
+
+As a **user** I would like to **be able to delete a moodboard I have created** in order to **remove moodboards that are no longer required or for completed projects**
+
+![Screenshot of the delete confirmation prompt](/docs/readme/delete.png)
+
+The Delete Moodboard Button is available on the moodboard detail page and allows users to remove a moodboard from the website. This action is restricted to the moodboard's creator or staff members. Once the moodboard is deleted, a confirmation message is displayed, and the user is redirected to the Home Page.
+
+**Register Page**
+
+User Story:
+
+As a **user** I can **register a new account** so that **I am able to use this to log in to the site**
+
+![Screenshot of the registration page](/docs/readme/register.png)
+
+The Register Page is accessible to logged-out users, allowing them to create a new account on the website. This page contains a registration form where users can enter their email address, username, and password. After successful registration, users are redirected to the Home Page.
+
+**Login Page**
+
+User Story:
+
+As a **user** I can **log in to an existing account** so that **I can interact with secured parts of the site, such as submitting a moodboard**
+
+![Screenshot of the login page](/docs/readme/login.png)
+
+The Login Page is accessible to logged-out users, allowing them to authenticate themselves and access protected areas of the website. This page contains a login form where users can enter their email address or username and password. After successful authentication, users are redirected to the Home Page.
+
+**Logout Button**
+
+User Story:
+
+As a **user** I can **log out of my account** so that **I can change the account I am logged into or maintain the security of my account on a shared device**
+
+![Screenshot of the logout confirmation page](/docs/readme/logout.png)
+
+The Logout Button is available in the Navbar and is visible only to logged-in users. When clicked, after a confirmation it logs the user out of their account and redirects them to the Home Page.
+
+**404 Page**
+
+User Story:
+
+As a **developer** I must **create a 404 page** in order to **alert users when they have attempted to access an invalid page**
+
+![Screenshot of the 404 page](/docs/readme/404.png)
+
+**403 Page**
+
+User Story:
+
+As a **developer** I must **create a 403 error page** so that **I can redirect users in order to secure views**
+
+**500 Page**
+
+User Story:
+
+As a **developer** I must **create a 500 error page** so that **users can be notified when an internal server error occurs**
+
+![Screenshot of the 500 page](/docs/readme/500.png)
 
 ## The Skeleton Plane
 
