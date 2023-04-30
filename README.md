@@ -335,13 +335,54 @@ By implementing these security features, the project aims to provide a safe and 
 
 ### Design 
 
-### Colour Scheme
-
-### Typography
-
-### Imagery
+This site uses a simple design and colour scheme, with the main focus being on accessibility, such as through ensuring high contrast between all text and elements.
 
 ## Technologies
+
+In this project, various technologies have been utilized to create a functional and visually appealing website. Below is a list of the technologies used and a brief explanation of their roles:
+
+1. **HTML**: HTML is used as the primary language for creating the structure and layout of the website, organizing content into elements such as headings, paragraphs, lists, and tables.
+
+2. **CSS**: Custom CSS is used to style the website, enhancing its visual appeal and ensuring consistency in the design. This includes elements such as colors, fonts, and layout adjustments.
+
+3. **JavaScript**: JavaScript is employed for adding interactivity and dynamic content to the website, such as on the moodboard details page for the larger modal view for images..
+
+4. **Python**: Python serves as the main programming language for the application, leveraging the Django web framework to facilitate the development of server-side functionality.
+
+5. **Visual Studio Code**: This IDE is used for coding and managing the project, offering a wide range of features to improve the development workflow.
+
+6. **Gitpod**: A cloud-based IDE enabling developers to work on projects from anywhere using a browser. Visual Studio Code was ran within this environment throughout the project's development.
+
+7. **GitHub**: GitHub hosts the project's source code, providing version control and facilitating collaboration among team members, as well as project management through the use of 'Issues' and the 'Kanban Board' which are built in to GitHub.
+
+8. **Git**: Git is used for managing the source code during the development process, allowing for the tracking of changes, branching, and merging.
+
+9. **Balsamiq**: Balsamiq is utilized to create wireframes for the website, allowing for the visualization and planning of the site's layout and user interactions before development begins.
+
+**Python Modules Used**
+
+-   Django Class based views (ListView, UpdateView, DeleteView, CreateView) - Used for the classes to create, read, update and delete
+-   Mixins (LoginRequiredMixin, UserPassesTestMixin) - Used for authentication and security throughout the site
+-   Messages - Used for sending status messages to the user, such as when an action is successful
+
+**External Python Modules**
+
+- **asgiref==3.6.0**: ASGI server implementation, used for asynchronous handling of requests in Django.
+- **cloudinary==1.32.0**: Cloudinary API integration, used for image management and storage.
+- **dj-database-url==0.5.0**: Database configuration helper, simplifies connecting Django to different databases.
+- **dj3-cloudinary-storage==0.0.6**: Django storage backend for Cloudinary, enables seamless integration.
+- **Django==3.2.18**: The main web framework used to build the project.
+- **django-allauth==0.54.0**: Authentication app, provides user registration, login, and social authentication.
+- **gunicorn==20.1.0**: WSGI HTTP server, used for running the Django application on production.
+- **oauthlib==3.2.2**: OAuth library, enables secure user authentication for social login.
+- **Pillow==9.5.0**: Python Imaging Library, supports image processing and manipulation.
+- **psycopg2==2.9.6**: PostgreSQL adapter for Python, connects Django to PostgreSQL database.
+- **PyJWT==2.6.0**: JSON Web Token implementation, used for secure communication between services.
+- **python3-openid==3.2.0**: OpenID support for Django, enables social authentication.
+- **pytz==2023.3**: Timezone library for Python, used to handle timezone-aware datetimes in Django.
+- **requests-oauthlib==1.3.1**: OAuth library for Requests, simplifies implementing OAuth in Python.
+- **sqlparse==0.4.3**: SQL parsing library, assists with formatting and validating SQL statements.
+- **whitenoise==6.4.0**: Static file serving for Django applications, simplifies serving static assets in production.
 
 ## Testing
 
