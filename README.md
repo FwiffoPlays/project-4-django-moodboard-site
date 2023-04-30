@@ -288,7 +288,48 @@ As a **developer** I must **create a 500 error page** so that **users can be not
 
 ### Database Design
 
+The database design for this project primarily consists of two main entities: Moodboard and Image. These entities are represented by Django models which are used to create the corresponding database tables. Below is an explanation of these entities and their relationships.
+
+**Moodboard**
+
+The Moodboard entity represents a moodboard created by a user. It has the following fields:
+
+1.  `title`: A CharField representing the title of the moodboard with a maximum length of 200 characters.
+2.  `description`: A TextField that stores an optional description for the moodboard.
+3.  `user`: A ForeignKey field that links the moodboard to the User model from Django's built-in authentication system, representing the creator of the moodboard. It uses `CASCADE` for the `on_delete` argument, which means if a user is deleted, all their associated moodboards will be deleted as well.
+4.  `tags`: A CharField that holds a comma-separated list of tags associated with the moodboard. It has a maximum length of 500 characters and is optional.
+
+**Image**
+
+The Image entity represents an image associated with a moodboard. It has the following fields:
+
+1.  `image`: An ImageField that stores the image file. Images are uploaded to a designated folder named "moodboard_images".
+2.  `moodboard`: A ForeignKey field that links the image to a Moodboard model. It uses `CASCADE` for the `on_delete` argument, meaning if a moodboard is deleted, all its associated images will also be deleted.
+
+**Relationships**
+
+The Moodboard and Image entities have a one-to-many relationship, where one moodboard can have multiple associated images. This relationship is represented by the ForeignKey field in the Image model, which connects each image to a single moodboard.
+
+The Moodboard and User entities also have a one-to-many relationship, where one user can create multiple moodboards. This relationship is represented by the ForeignKey field in the Moodboard model, which connects each moodboard to a single user.
+
 ### Security
+
+In this project, various security features have been implemented to ensure user privacy and data protection. The following is an explanation of these security measures:
+
+1. **User Authentication and Authorization**: The project uses Django's built-in authentication system, which provides a secure and robust way to manage user authentication. This includes features like password hashing, password reset functionality, and login/logout mechanisms. Additionally, the project incorporates role-based access control, where certain views and actions are restricted to specific user groups (such as staff members) or authenticated users only.
+
+2. **CSRF Protection**: Django includes built-in protection against Cross-Site Request Forgery (CSRF) attacks. By default, CSRF middleware generates a unique token for each user session and includes it in forms as a hidden field. This token is then validated on the server-side upon form submission to ensure that the request originates from the same site.
+
+3. **SQL Injection Prevention**: Django's Object-Relational Mapping (ORM) system automatically sanitizes query inputs, effectively preventing SQL injection attacks. By using Django's ORM for database operations, the project ensures that user input is escaped and properly validated before being included in SQL queries.
+
+4. **Secure File Uploads**: The project uses Cloudinary for handling file uploads, which provides a secure and scalable solution for storing and serving images. By relying on a trusted third-party service, the project minimizes the potential security risks associated with file uploads.
+
+5. **Secure Configuration**: The project stores sensitive configuration variables, such as secret keys, database credentials, and API keys, in environment variables or Heroku config vars. This ensures that sensitive data is not hardcoded into the source code and can be easily managed and protected.
+
+6. **HTTPS**: It is recommended to enforce HTTPS for the deployed application, ensuring that all data transmitted between the user's browser and the server is encrypted. This protects sensitive data, such as login credentials and personal information, from being intercepted by malicious parties.
+
+By implementing these security features, the project aims to provide a safe and secure experience for users while minimizing the potential for data breaches or unauthorized access to sensitive information.
+
 
 ## The Surface Plane
 
